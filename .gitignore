@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data
+/data/*.csv
+!/data/sample_*.csv   # allow sample datasets
+
+# Models
+/models/
+*.pt
+*.bin
+*.h5
+
+# Results
+/results/
+
+# Environment files
+.env
+*.sqlite
+*.log
+
+# Colab/VSCode
+*.swp
+*.DS_Store
+*.vscode/
