@@ -30,7 +30,8 @@ Evaluation will include **accuracy, precision, recall, F1-score**, and **explain
 
 ## Roadmap
 - [x] **Data collection**
-- [ ] Cleaning & EDA
+- [x] **Cleaning** 
+- [ ] EDA
 - [ ] Baseline ML experiments  
 - [ ] Neural sequence modeling (BiLSTM)  
 - [ ] Transformer fine-tuning (BERT/DistilBERT)  
