@@ -29,7 +29,8 @@ Evaluation will include **accuracy, precision, recall, F1-score**, and **explain
 - *⚠️ Sample data is included for demonstration purpose, but post IDs and personal info are removed for privacy.*
 
 ## Roadmap
-- [x] Data collection & cleaning  
+- [x] **Data collection**
+- [ ] Cleaning & EDA
 - [ ] Baseline ML experiments  
 - [ ] Neural sequence modeling (BiLSTM)  
 - [ ] Transformer fine-tuning (BERT/DistilBERT)  
