@@ -7,9 +7,9 @@
 │
 ├─ /notebooks           # collab notebooks
 │   ├─ 01_dataset_creation.ipynb
+│   ├─ 02_data_cleaning.ipynb
+│   ├─ 03_eda.ipynb
 │   ├─ 
-│   ├─ 
-│   ├─ 04_eda.ipynb
 │   └─ 05_model_training.ipynb
 │
 ├─ /src                 # Python scripts / modules
