@@ -17,7 +17,7 @@ Sentence/post embeddings (t-SNE + interpretation)
 ### Observations from BERT Post Embeddings (t-SNE Visualization)
 
 From the t-SNE plot of BERT-based sentence embeddings:
-![BERT + t-SNE -Post Embeddings](images/eda/embeddings/BERT_tSNE_Post_Embeddings.png)
+![BERT + t-SNE -Post Embeddings](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/embeddings/BERT_tSNE_Post_Embeddings.png)
 - **Clear Clusters**:  
   - Posts belonging to **ADHD, Addiction, PTSD, OCD, and Normal** form relatively well-separated clusters.  
   - This indicates that the language patterns in these classes are distinctive enough for the embedding model to group them apart.
