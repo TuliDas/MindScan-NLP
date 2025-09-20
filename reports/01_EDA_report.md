@@ -25,7 +25,9 @@ We analyzed the distribution of posts across different mental health labels.
   | OCD         | 2000  |
   | PTSD        | 2000  |
   | Suicidal    | 1913  |
-
+- **Visualization:**  
+  ![Posts per Class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/posts_per_class_barplot.png)
+  
 - **Percentage distribution of labels:**  
   | Label       | Percentage |
   |-------------|------------|
@@ -42,10 +44,6 @@ We analyzed the distribution of posts across different mental health labels.
   - The dataset is mostly balanced across all classes.  
   - Each class contains **~2000 posts**, except **Suicidal**, which has **slightly fewer (1913 posts, 12.02%)**.  
   - This small imbalance is unlikely to significantly affect model performance, but can be handled with class weighting if needed.  
-
-- **Visualization:**  
-  ![Posts per Class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/posts_per_class_barplot.png)   
-
 ---
 
 ## 3. Text Characteristics
