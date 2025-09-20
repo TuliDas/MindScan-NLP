@@ -53,9 +53,10 @@ We analyzed the text length and word distribution for posts across different cla
 ### Distribution of Number of Words per Post
 - **Histograms** were plotted for both `df_cleaned_ml` (aggressively cleaned) and `df_cleaned_bert` (minimally cleaned).  
 - **Observation:** BERT dataset posts have visibly more words per post compared to ML-cleaned dataset due to minimal cleaning.  
-<p float="left">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-words-per-post-ml.png" width="400" />
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-word-per-post-bert.png" width="400" /> 
+
+<p float="middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-words-per-post-ml.png" width="500" />
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-word-per-post-bert.png" width="500" /> 
 </p>
 
 ### Number of Words per Class
