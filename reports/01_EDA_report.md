@@ -10,10 +10,41 @@ This report presents the exploratory analysis performed on the dataset to unders
 The dataset is clean, balanced in terms of structure, and ready for further analysis.
 ---
 
-## 2. Label Analysis
-- Total count of posts per label  
-- Barplot: Number of posts per class  
-- Percentage distribution of labels  
+## 2. Label Analysis  
+
+We analyzed the distribution of posts across different mental health labels.  
+
+- **Total count of posts per label:**  
+  | Label       | Count |
+  |-------------|-------|
+  | ADHD        | 2000  |
+  | Addiction   | 2000  |
+  | Anxiety     | 2000  |
+  | Depression  | 2000  |
+  | Normal      | 2000  |
+  | OCD         | 2000  |
+  | PTSD        | 2000  |
+  | Suicidal    | 1913  |
+
+- **Percentage distribution of labels:**  
+  | Label       | Percentage |
+  |-------------|------------|
+  | ADHD        | 12.57%     |
+  | Addiction   | 12.57%     |
+  | Anxiety     | 12.57%     |
+  | Depression  | 12.57%     |
+  | Normal      | 12.57%     |
+  | OCD         | 12.57%     |
+  | PTSD        | 12.57%     |
+  | Suicidal    | 12.02%     |
+
+- **Observations:**  
+  - The dataset is mostly balanced across all classes.  
+  - Each class contains **~2000 posts**, except **Suicidal**, which has **slightly fewer (1913 posts, 12.02%)**.  
+  - This small imbalance is unlikely to significantly affect model performance, but can be handled with class weighting if needed.  
+
+- **Visualization:**  
+  ![Posts per Class]([images/eda/posts_per_class.png](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/sns-barplot-number-of-posts-per-class.png))   
 
 ---
 
