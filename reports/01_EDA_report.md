@@ -44,7 +44,7 @@ We analyzed the distribution of posts across different mental health labels.
   - This small imbalance is unlikely to significantly affect model performance, but can be handled with class weighting if needed.  
 
 - **Visualization:**  
-  ![Posts per Class]([images/eda/posts_per_class.png](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/sns-barplot-number-of-posts-per-class.png))   
+  ![Posts per Class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/posts_per_class_barplot.png)   
 
 ---
 
