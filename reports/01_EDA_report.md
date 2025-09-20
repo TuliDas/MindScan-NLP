@@ -1,21 +1,57 @@
-Make a structured narrative of all your findings:
+# Exploratory Data Analysis (EDA)
 
-Dataset description
+This report presents the exploratory analysis performed on the dataset to understand its structure, distribution, and linguistic characteristics.  
 
-Cleaning steps summary
+---
 
-Lexical diversity comparison
+## 1. Dataset Structure & Quality
+- Dataset shape : (15913 rows, 2 columns)
+- Check for missing values : None detected 
+The dataset is clean, balanced in terms of structure, and ready for further analysis.
+---
 
-Distinctive keywords (Chi-square)
+## 2. Label Analysis
+- Total count of posts per label  
+- Barplot: Number of posts per class  
+- Percentage distribution of labels  
 
-Word embeddings (visualization + insights)
+---
 
-Sentence/post embeddings (t-SNE + interpretation)
+## 3. Text Characteristics
+- Distribution of number of words per post (histplot)  
+- Number of words per class (boxplot)  
+- Average text length per class  
 
+---
 
+## 4. Word-Level Analysis
 
-### Observations from BERT Post Embeddings (t-SNE Visualization)
+### 4.1 Initial Word Analysis
+- Word clouds for each class  
+- Top N most frequent words per class  
 
+### 4.2 After Removing Common Words
+- Cleaned word clouds for each class  
+- Updated Top N most frequent words per class  
+
+---
+
+## 5. Lexical Diversity
+- Mean lexical diversity (unique word ratio) per class  
+- Comparison between `df_cleaned_ml` and `df_cleaned_bert` datasets  
+- Barplot of lexical diversity scores  
+
+---
+
+## 6. Statistical Distinctive Keywords (Chi-Square)
+- Top 10 statistically distinctive words per class (barplots)  
+
+---
+
+## 7. Embedding Visualization
+### 7.1 Observations from word2Vec Word Embedding (t-TSNE Visualization)  
+
+### 7.2 Observations from BERT Post Embeddings (t-SNE Visualization) 
 From the t-SNE plot of BERT-based sentence embeddings:
 [BERT + t-SNE -Post Embeddings](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/embeddings/BERT_tSNE_Post_Embeddings.png)
 - **Clear Clusters**:  
@@ -33,3 +69,14 @@ From the t-SNE plot of BERT-based sentence embeddings:
 
 ### Key Insight:
 The embedding visualization suggests that some mental health conditions (e.g., ADHD, Addiction, OCD) have distinct linguistic signatures, while others (especially Depression and Suicidal) are semantically intertwined. This overlap highlights the **real-world complexity** of language use in mental health discourse.
+
+---
+
+## 8. Key Insights & Observations
+- Summary of findings from all sections  
+- Notable patterns, class differences, and data quality remarks  
+
+
+
+
+
