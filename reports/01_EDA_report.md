@@ -14,32 +14,22 @@ The dataset is clean, balanced in terms of structure, and ready for further anal
 
 We analyzed the distribution of posts across different mental health labels.  
 
-- **Total count of posts per label:**  
-  | Label       | Count |
-  |-------------|-------|
-  | ADHD        | 2000  |
-  | Addiction   | 2000  |
-  | Anxiety     | 2000  |
-  | Depression  | 2000  |
-  | Normal      | 2000  |
-  | OCD         | 2000  |
-  | PTSD        | 2000  |
-  | Suicidal    | 1913  |
+- **Total count and percentage of posts per label:**
+
+| Label      | Count | Percentage | 
+|------------|-------|------------|
+| ADHD       | 2000  | 12.57%     |
+| Addiction  | 2000  | 12.57%     | 
+| Anxiety    | 2000  | 12.57%     | 
+| Depression | 2000  | 12.57%     | 
+| Normal     | 2000  | 12.57%     | 
+| OCD        | 2000  | 12.57%     | 
+| PTSD       | 2000  | 12.57%     | 
+| Suicidal   | 1913  | 12.02%     |
+
 - **Visualization:**  
   ![Posts per Class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/posts_per_class_barplot.png)
   
-- **Percentage distribution of labels:**  
-  | Label       | Percentage |
-  |-------------|------------|
-  | ADHD        | 12.57%     |
-  | Addiction   | 12.57%     |
-  | Anxiety     | 12.57%     |
-  | Depression  | 12.57%     |
-  | Normal      | 12.57%     |
-  | OCD         | 12.57%     |
-  | PTSD        | 12.57%     |
-  | Suicidal    | 12.02%     |
-
 - **Observations:**  
   - The dataset is mostly balanced across all classes.  
   - Each class contains **~2000 posts**, except **Suicidal**, which has **slightly fewer (1913 posts, 12.02%)**.  
@@ -69,55 +59,19 @@ We analyzed the text length and word distribution for posts across different cla
 
 ### Average Text Length per Class
 
-#### Cleaned ML Dataset (`df_cleaned_ml`)
-- **Average words per post by class:**
-  | Label       | Avg. Words |
-  |-------------|------------|
-  | ADHD        | 44.63      |
-  | Addiction   | 35.34      |
-  | Anxiety     | 37.05      |
-  | Depression  | 35.14      |
-  | Normal      | 38.80      |
-  | OCD         | 34.77      |
-  | PTSD        | 37.09      |
-  | Suicidal    | 35.58      |
+#### Cleaned ML Dataset (`df_cleaned_ml`) and Cleaned Bert Dataset (`df_cleaned_bert`)
+- **Average words and char per post by class:**
 
-- **Average characters per post by class:**
-  | Label       | Avg. Chars |
-  |-------------|------------|
-  | ADHD        | 307.42     |
-  | Addiction   | 235.16     |
-  | Anxiety     | 248.78     |
-  | Depression  | 229.51     |
-  | Normal      | 259.75     |
-  | OCD         | 232.54     |
-  | PTSD        | 252.31     |
-  | Suicidal    | 230.25     |
-
-#### Cleaned BERT Dataset (`df_cleaned_bert`)
-- **Average words per post by class:**
-  | Label       | Avg. Words |
-  |-------------|------------|
-  | ADHD        | 108.28     |
-  | Addiction   | 83.70      |
-  | Anxiety     | 89.06      |
-  | Depression  | 87.89      |
-  | Normal      | 89.91      |
-  | OCD         | 85.28      |
-  | PTSD        | 90.78      |
-  | Suicidal    | 89.28      |
-
-- **Average characters per post by class:**
-  | Label       | Avg. Chars |
-  |-------------|------------|
-  | ADHD        | 576.70     |
-  | Addiction   | 435.61     |
-  | Anxiety     | 470.66     |
-  | Depression  | 451.46     |
-  | Normal      | 476.65     |
-  | OCD         | 448.24     |
-  | PTSD        | 479.80     |
-  | Suicidal    | 454.86     |
+| Label      | Avg. Words (ML) | Avg. Chars (ML) | Avg. Words (BERT) | Avg. Chars (BERT) |
+|------------|----------------|----------------|------------------|------------------|
+| ADHD       | 44.63          | 307.42         | 108.28           | 576.70           |
+| Addiction  | 35.34          | 235.16         | 83.70            | 435.61           |
+| Anxiety    | 37.05          | 248.78         | 89.06            | 470.66           |
+| Depression | 35.14          | 229.51         | 87.89            | 451.46           |
+| Normal     | 38.80          | 259.75         | 89.91            | 476.65           |
+| OCD        | 34.77          | 232.54         | 85.28            | 448.24           |
+| PTSD       | 37.09          | 252.31         | 90.78            | 479.80           |
+| Suicidal   | 35.58          | 230.25         | 89.28            | 454.86           |
 
 ### Observations
 - ML-cleaned dataset posts are shorter due to aggressive removal of stopwords and special characters.  
