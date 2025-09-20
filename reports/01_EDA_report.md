@@ -60,7 +60,12 @@ We analyzed the text length and word distribution for posts across different cla
 </p>
 
 ### Number of Words per Class
-- **Boxplots** show the distribution of word counts per class for both datasets.  
+- **Boxplots** show the distribution of word counts per class for both datasets.
+   
+<p float="left">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/boxplot-word-count-per-class-ml.png" width="500"/>
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/boxplot-word-count-per-class-bert.png" width="500"/> 
+</p>
 
 ### Average Text Length per Class
 
@@ -125,13 +130,57 @@ We analyzed the text length and word distribution for posts across different cla
 
 ## 4. Word-Level Analysis
 
+## 4. Word-Level Analysis
+
 ### 4.1 Initial Word Analysis
-- Word clouds for each class  
-- Top N most frequent words per class  
+- Generated word clouds for each class to visualize most frequent words.  
+- Calculated top 20 most frequent words per class (before removing common words).  
+
+**Observation:**  
+Many common words such as *not, like, feel, know, want, time, go, think, get* appear in most classes. These are considered noise for EDA purposes.
+
+---
 
 ### 4.2 After Removing Common Words
-- Cleaned word clouds for each class  
-- Updated Top N most frequent words per class  
+- **Purpose:**  
+This step is **for EDA only** to highlight class-distinctive words. These cleaned visualizations are **not used for model training**.
+- Removed common/repetitive words appearing in more than 4 classes, including typical stopwords and negations, e.g.:  
+```
+work, today, year, day, thing, like, feel, know, want, time, go,
+think, get, take, people, life, start, help, try, good, bad,
+need, tell, way, no, not, never, nor
+```
+- Re-generated word clouds for each class after removing common words.  
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/adhd_wc.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/addiction_wc.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/anxiety_wc.png" width="300">
+</p>
+
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/depression_wc.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/normal_wc.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/ocd_wc.png" width="300">
+</p>
+
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/ptsd_wc.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/suicidal_wc.png" width="300">
+</p>
+
+**Top 20 words per class (after cleaning):**  
+
+- **ADHD:** adhd, med, medication, find, diagnose, mg, experience, adderall, month, week, long, focus, lot, make, say, anxiety, hour, look, struggle, school  
+- **Addiction:** quit, drink, smoke, sober, month, stop, week, addiction, long, thank, alcohol, cigarette, hard, nicotine, well, night, ago, clean, friend, drug  
+- **Anxiety:** anxiety, panic, attack, anxious, heart, social, have, make, symptom, happen, talk, health, come, friend, stop, look, experience, die, say, week  
+- **Depression:** depression, friend, anymore, hate, well, talk, live, depressed, tired, end, love, hard, care, happy, make, find, die, thought, stop, long  
+- **Normal:** lpt, happy, love, friend, look, s, find, lot, say, edit, make, new, come, thank, ask, little, old, talk, see, post  
+- **OCD:** ocd, thought, intrusive, anxiety, compulsion, stop, make, happen, have, find, say, fear, come, person, look, brain, right, head, experience, lot  
+- **PTSD:** ptsd, trauma, trigger, happen, experience, flashback, have, nightmare, therapy, sleep, talk, find, therapist, come, friend, lot, hard, anxiety, stop, make  
+- **Suicidal:** die, suicide, kill, love, live, friend, find, lose, end, wish, hate, anymore, well, leave, family, fuck, brother, month, miss, say
+
+**Observation:**
+After cleaning, the distinctive words per class are more meaningful, helping to understand unique linguistic patterns across different mental health classes. Word clouds now provide a clearer picture of class-specific terms.
 
 ---
 
