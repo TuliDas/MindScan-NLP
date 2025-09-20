@@ -47,9 +47,78 @@ We analyzed the distribution of posts across different mental health labels.
 ---
 
 ## 3. Text Characteristics
-- Distribution of number of words per post (histplot)  
-- Number of words per class (boxplot)  
-- Average text length per class  
+
+We analyzed the text length and word distribution for posts across different classes and datasets.  
+
+### Distribution of Number of Words per Post
+- **Histograms** were plotted for both `df_cleaned_ml` (aggressively cleaned) and `df_cleaned_bert` (minimally cleaned).  
+- **Observation:** BERT dataset posts have visibly more words per post compared to ML-cleaned dataset due to minimal cleaning.  
+<p float="left">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-words-per-post-ml.png" width="300" />
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/histplot-word-per-post-bert.png" width="300" /> 
+</p>
+
+### Number of Words per Class
+- **Boxplots** show the distribution of word counts per class for both datasets.  
+
+### Average Text Length per Class
+
+#### Cleaned ML Dataset (`df_cleaned_ml`)
+- **Average words per post by class:**
+  | Label       | Avg. Words |
+  |-------------|------------|
+  | ADHD        | 44.63      |
+  | Addiction   | 35.34      |
+  | Anxiety     | 37.05      |
+  | Depression  | 35.14      |
+  | Normal      | 38.80      |
+  | OCD         | 34.77      |
+  | PTSD        | 37.09      |
+  | Suicidal    | 35.58      |
+
+- **Average characters per post by class:**
+  | Label       | Avg. Chars |
+  |-------------|------------|
+  | ADHD        | 307.42     |
+  | Addiction   | 235.16     |
+  | Anxiety     | 248.78     |
+  | Depression  | 229.51     |
+  | Normal      | 259.75     |
+  | OCD         | 232.54     |
+  | PTSD        | 252.31     |
+  | Suicidal    | 230.25     |
+
+#### Cleaned BERT Dataset (`df_cleaned_bert`)
+- **Average words per post by class:**
+  | Label       | Avg. Words |
+  |-------------|------------|
+  | ADHD        | 108.28     |
+  | Addiction   | 83.70      |
+  | Anxiety     | 89.06      |
+  | Depression  | 87.89      |
+  | Normal      | 89.91      |
+  | OCD         | 85.28      |
+  | PTSD        | 90.78      |
+  | Suicidal    | 89.28      |
+
+- **Average characters per post by class:**
+  | Label       | Avg. Chars |
+  |-------------|------------|
+  | ADHD        | 576.70     |
+  | Addiction   | 435.61     |
+  | Anxiety     | 470.66     |
+  | Depression  | 451.46     |
+  | Normal      | 476.65     |
+  | OCD         | 448.24     |
+  | PTSD        | 479.80     |
+  | Suicidal    | 454.86     |
+
+### Observations
+- ML-cleaned dataset posts are shorter due to aggressive removal of stopwords and special characters.  
+- BERT dataset posts are longer and closer to the original text content.  
+- Among classes, **ADHD posts are consistently longer**, while **OCD and Addiction posts are shorter** across both datasets.  
+- Character counts follow a similar trend as word counts.
+
 
 ---
 
