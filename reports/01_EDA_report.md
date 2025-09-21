@@ -285,7 +285,7 @@ Thus, combining Word2Vec with t-SNE allows us to **visualize semantic patterns**
 ---
 
 #### 7.1.3 Methodology
-1. **Corpus Preparation:** All cleaned texts were tokenized into words.  
+1. **Corpus Preparation:** All cleaned texts were tokenized into words.( `df_cleaned_ml` dataset ) 
 2. **Word2Vec Training:** A Skip-gram model was trained to learn word embeddings (100 dimensions).  
 3. **Keyword Selection:** For each mental health class, the most distinctive words (from chi-square analysis) were extracted.  
 4. **Embedding Extraction:** Word2Vec vectors were obtained for these distinctive words.  
@@ -324,7 +324,7 @@ Thus, combining Word2Vec with t-SNE allows us to **visualize semantic patterns**
 - Helps reveal **semantic similarities and overlaps** between posts of different classes.  
 
 #### 7.2.3 Methodology
-1. **Embedding Generation:** Each post is passed through a pretrained BERT model (here, a lightweight variant like *MiniLM*), producing a numerical embedding for every post.  
+1. **Embedding Generation:** Each post is passed through a pretrained BERT model (here, a lightweight variant like *MiniLM*), producing a numerical embedding for every post. ( `df_cleaned_bert` dataset )
 2. **Dimensionality Reduction:** Since embeddings are high-dimensional (hundreds of dimensions), we apply **t-SNE** to reduce them into 2D space for visualization.  
 3. **Visualization:** Posts are plotted in a scatter plot, where each point corresponds to one post, and colors represent classes.  
 
