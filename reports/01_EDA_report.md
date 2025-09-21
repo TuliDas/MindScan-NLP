@@ -107,18 +107,13 @@ need, tell, way, no, not, never, nor
   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/adhd_wc.png" width="300">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/addiction_wc.png" width="300">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/anxiety_wc.png" width="300">
-</p>
-
-<p float = "middle">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/depression_wc.png" width="300">
+    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/depression_wc.png" width="300">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/normal_wc.png" width="300">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/ocd_wc.png" width="300">
-</p>
-
-<p float = "middle">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/ptsd_wc.png" width="300">
+    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/ptsd_wc.png" width="300">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/wordclouds/suicidal_wc.png" width="300">
 </p>
+
 
 **Top 20 words per class (after cleaning):**  
 
@@ -171,18 +166,18 @@ Afterwards, the **mean lexical diversity score was computed for each class** in 
 | PTSD       | 0.824                   | 0.751                     |
 | Suicidal   | 0.825                   | 0.747                     |
 
-### 5.5 Observations
+### 5.5 Visualization
+- A **bar plot** can highlight the differences between classes and between the two datasets.  
+- Two bars per class: one for `df_cleaned_ml`, one for `df_cleaned_bert`  
+
+![lexical-diversity-comparison-by-class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/lexical-diversity-comparison-by-class.png)
+
+### 5.6 Observations
 - **ML dataset** generally shows **higher lexical diversity** compared to the BERT-cleaned dataset.  
 - The difference is expected because **BERT preprocessing involves text normalization**, which reduces variation (e.g., lowercasing, token standardization).  
 - **Addiction** and **Suicidal** classes show the **highest lexical diversity** in ML dataset, indicating varied expressions in these categories.  
 - **ADHD** and **OCD** show comparatively **lower lexical diversity**, suggesting repetitive usage of medical terms (e.g., “adhd”, “ocd”, “medication”).  
 - Overall, lexical diversity drops in the BERT dataset due to aggressive preprocessing but still preserves relative class-level trends.  
-
-### 5.6 Visualization
-- A **bar plot** can highlight the differences between classes and between the two datasets.  
-- Two bars per class: one for `df_cleaned_ml`, one for `df_cleaned_bert`  
-
-![lexical-diversity-comparison-by-class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/lexical-diversity-comparison-by-class.png)
 
 ---
 
@@ -234,16 +229,7 @@ Below are the top statistically distinctive words (via Chi-Square) for each clas
 - **Suicidal**:  
   `suicide, kill, die, grief, commit, death, suicidal, wish, son, dad`  
 
-### 6.5 Observations
-- The Chi-Square method successfully identifies **domain-specific markers** for each class.  
-- **ADHD** and **OCD** show clear clinical/medical terminology (e.g., *adderall, medication, intrusive, compulsion*).  
-- **Addiction** highlights behavior and recovery-related terms (e.g., *sober, relapse, nicotine*).  
-- **Anxiety** emphasizes physiological symptoms (*panic, attack, chest, palpitation*).  
-- **Depression** and **Suicidal** classes share emotional and existential markers, but Suicidal also contains explicit terms (*suicide, kill, die*).  
-- **Normal** includes casual/non-clinical terms (*lpt, happy, edit, travel*), showing contrast with mental health categories.  
-- This statistical filtering is **more informative than raw word frequency**, making it valuable for feature engineering and model explainability.
-
-### 6.6 Visualization
+### 6.5 Visualization
 - For each class, bar plots of **Top 10 distinctive words** clearly illustrate the strength of association.  
 
 <p float = "middle">
@@ -256,14 +242,96 @@ Below are the top statistically distinctive words (via Chi-Square) for each clas
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ptsd-distinctive-class-barplot.png" width="500">
    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/suicidal-distinctive-class-barplot.png" width="500">
 </p>
+
+### 6.6 Observations
+- The Chi-Square method successfully identifies **domain-specific markers** for each class.  
+- **ADHD** and **OCD** show clear clinical/medical terminology (e.g., *adderall, medication, intrusive, compulsion*).  
+- **Addiction** highlights behavior and recovery-related terms (e.g., *sober, relapse, nicotine*).  
+- **Anxiety** emphasizes physiological symptoms (*panic, attack, chest, palpitation*).  
+- **Depression** and **Suicidal** classes share emotional and existential markers, but Suicidal also contains explicit terms (*suicide, kill, die*).  
+- **Normal** includes casual/non-clinical terms (*lpt, happy, edit, travel*), showing contrast with mental health categories.  
+- This statistical filtering is **more informative than raw word frequency**, making it valuable for feature engineering and model explainability.
+
+
 ---
 
 ## 7. Embedding Visualization
-### 7.1 Observations from word2Vec Word Embedding (t-TSNE Visualization)  
 
-### 7.2 Observations from BERT Post Embeddings (t-SNE Visualization) 
+### 7.1 Word Embedding (word2Vec , t-TSNE)
+
+#### 7.1.1 What is Word2Vec?
+Word2Vec is a neural embedding technique that represents words as **dense numerical vectors** in a continuous vector space.  
+- Words that appear in **similar contexts** (e.g., "doctor" and "nurse") are placed closer together in this space.  
+- It captures **semantic similarity**: analogies such as *king – man + woman ≈ queen* become possible.  
+- Instead of treating words as independent tokens, Word2Vec learns **relationships** between them.
+
+There are two main training approaches:  
+- **CBOW (Continuous Bag of Words):** Predicts a word based on its surrounding context.  
+- **Skip-gram:** Predicts surrounding context words given a target word.  
+
+In this analysis, Word2Vec helps us understand **how the language of each mental health class differs** and whether distinctive keywords form unique clusters.
+
+---
+
+#### 7.1.2 What is t-SNE?
+t-SNE (t-distributed Stochastic Neighbor Embedding) is a **dimensionality reduction technique** designed for visualization.  
+- It projects **high-dimensional embeddings** (e.g., 100D Word2Vec vectors) into **2D space**.  
+- Preserves **local structure**: words that are close in high-dimensional space remain close in the 2D plot.  
+- Useful for exploring how different groups of words **cluster** together.
+
+Thus, combining Word2Vec with t-SNE allows us to **visualize semantic patterns** across classes in two dimensions.
+
+---
+
+#### 7.1.3 Methodology
+1. **Corpus Preparation:** All cleaned texts were tokenized into words.  
+2. **Word2Vec Training:** A Skip-gram model was trained to learn word embeddings (100 dimensions).  
+3. **Keyword Selection:** For each mental health class, the most distinctive words (from chi-square analysis) were extracted.  
+4. **Embedding Extraction:** Word2Vec vectors were obtained for these distinctive words.  
+5. **Dimensionality Reduction:** t-SNE projected the embeddings into 2D space.  
+6. **Visualization:** Scatterplots were generated, where each word was plotted and colored according to its class label.
+
+---
+
+#### 7.1.4 Visualization
+- Each point in the scatterplot represents a **word**.  
+- Points closer together indicate words used in **similar contexts**.  
+- Colors differentiate mental health classes, showing whether their vocabulary overlaps or forms separate clusters.  
+
+![Word2Vec_tSNE_top_distinctive_words_visualization](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/embeddings/Word2Vec_tSNE_top_distinctive_words_visualization.png)
+
+---
+
+#### 7.1.5 Observations
+- **Clear Separation:** Words from ADHD, Addiction, Suicidal, Depression, Anxiety, and Normal categories form distinguishable clusters, indicating that these classes rely on somewhat unique vocabularies.  
+- **PTSD & OCD Overlap:** PTSD and OCD words form tighter clusters close to each other, highlighting their shared terminology (e.g., “flashback,” “trauma,” “obsession,” “harm”).  
+- **Cross-Class Leakage:** Certain words, such as *“ocd”* and *“anxiety”*, appear across at least three different classes, showing that some terms are not strictly exclusive to one disorder and may be used more broadly across communities.  
+- **Interpretation:** While most classes show distinct linguistic boundaries, the overlap in OCD and Anxiety-related terms suggests **semantic and symptomatic connections**, making these classes linguistically harder to separate compared to others.  
+---
+
+
+
+## 7.2 Sentence/Post BERT Embeddings (t-SNE Visualization)
+
+#### 7.2.1 What are BERT Embeddings?
+- **BERT (Bidirectional Encoder Representations from Transformers):** A transformer-based model trained on large text corpora. It generates contextual embeddings, meaning the same word can have different vector representations depending on its surrounding words.  
+- **Sentence/Post Embeddings:** Instead of focusing only on individual words, sentence embeddings represent the *entire text/post* as a dense vector. This allows us to capture the semantic meaning of complete posts rather than isolated words.  
+
+#### 7.2.2 Why Use Sentence Embeddings?
+- Captures **contextual semantics** beyond simple word frequency.  
+- Allows clustering and visualization of posts to see if texts from similar mental health categories naturally group together.  
+- Helps reveal **semantic similarities and overlaps** between posts of different classes.  
+
+#### 7.2.3 Methodology
+1. **Embedding Generation:** Each post is passed through a pretrained BERT model (here, a lightweight variant like *MiniLM*), producing a numerical embedding for every post.  
+2. **Dimensionality Reduction:** Since embeddings are high-dimensional (hundreds of dimensions), we apply **t-SNE** to reduce them into 2D space for visualization.  
+3. **Visualization:** Posts are plotted in a scatter plot, where each point corresponds to one post, and colors represent classes.  
+
+#### 7.2.4 Visualization
 From the t-SNE plot of BERT-based sentence embeddings:
 ![BERT + t-SNE -Post Embeddings](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/embeddings/BERT_tSNE_Post_Embeddings.png)
+
+#### 7.2.5 Observations
 - **Clear Clusters**:  
   - Posts belonging to **ADHD, Addiction, PTSD, OCD, and Normal** form relatively well-separated clusters.  
   - This indicates that the language patterns in these classes are distinctive enough for the embedding model to group them apart.
@@ -277,12 +345,12 @@ From the t-SNE plot of BERT-based sentence embeddings:
   - This is understandable, as suicidal ideation is strongly correlated with depressive symptoms, and the linguistic signals used in posts often intersect.  
   - As a result, distinguishing between these two categories based solely on embeddings may be challenging.
 
-### Key Insight:
+### 7.3 Key Insight:
 The embedding visualization suggests that some mental health conditions (e.g., ADHD, Addiction, OCD) have distinct linguistic signatures, while others (especially Depression and Suicidal) are semantically intertwined. This overlap highlights the **real-world complexity** of language use in mental health discourse.
 
 ---
 
-## 8. Key Insights & Observations
+## 8. Conclusion
 - Summary of findings from all sections  
 - Notable patterns, class differences, and data quality remarks  
 
