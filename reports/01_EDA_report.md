@@ -1,6 +1,6 @@
 # Exploratory Data Analysis (EDA)
 
-This report presents the exploratory analysis performed on the dataset to understand its structure, distribution, and linguistic characteristics.  
+This section explores the dataset’s structure, distribution, and linguistic properties to identify class-specific patterns, assess data quality, and provide insights that guide subsequent modeling and classification tasks.
 
 ---
 
@@ -83,6 +83,7 @@ We analyzed the text length and word distribution for posts across different cla
 ---
 
 ## 4. Word-Level Analysis
+A **word cloud** is a visual representation of text data where the size of each word reflects its frequency or importance in the corpus. In the context of EDA, word clouds help highlight the most dominant terms across different classes, making it easier to identify recurring patterns, class-specific keywords, and linguistic differences at a glance. While they are primarily descriptive and not quantitative, they provide quick insights into vocabulary trends and support further statistical or embedding-based analyses. 
 
 ### 4.1 Initial Word Analysis
 - Generated word clouds for each class to visualize most frequent words.  
