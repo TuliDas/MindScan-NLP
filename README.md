@@ -31,7 +31,7 @@ Evaluation will include **accuracy, precision, recall, F1-score**, and **explain
 ## Roadmap
 - [x] **Data collection**
 - [x] **Cleaning** 
-- [x] **EDA + Report**
+- [x] **EDA + EDA_Report writing**
 - [ ] Baseline ML experiments  
 - [ ] Neural sequence modeling (BiLSTM)  
 - [ ] Transformer fine-tuning (BERT/DistilBERT)  
