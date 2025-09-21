@@ -139,14 +139,26 @@ After cleaning, the distinctive words per class are more meaningful, helping to 
 ## 5. Lexical Diversity
 
 ### 5.1 What is Lexical Diversity?
-Lexical diversity measures the **variety of vocabulary** used within a text. It is typically calculated as the ratio of **unique words to total words** (often referred to as the *type-token ratio*). A higher lexical diversity score indicates richer vocabulary usage, while a lower score suggests more repetition of words.
+Lexical diversity measures the **variety of vocabulary** used within a text. It is typically calculated as the ratio of **unique words to total words** (also known as the *type-token ratio*).  
+\[
+\text{Lexical Diversity} = \frac{\text{Number of Unique Words (Types)}}{\text{Total Number of Words (Tokens)}}
+\]  
+A higher lexical diversity score indicates richer vocabulary usage, while a lower score suggests more repetition of words.
+
+---
 
 ### 5.2 Why is it Important?
-- Helps to understand **expressiveness** of language within each mental health class.  
-- Indicates whether users in different categories rely on **repetitive words** (e.g., symptom keywords) or use a **broader vocabulary**.  
+- Helps to understand the **expressiveness** of language within each mental health class.  
+- Indicates whether users in different categories rely on **repetitive words** (e.g., symptom-related keywords) or use a **broader vocabulary**.  
 - Useful in **feature analysis** for NLP tasks, as lexical richness may impact model generalization.  
 
-### 5.3 Comparison of Lexical Diversity (ML vs BERT Datasets)
+---
+
+### 5.3 Methodology
+Lexical diversity was calculated for each text as the ratio of unique words to total words.  
+Afterwards, the **mean lexical diversity score was computed for each class** in both datasets (**df_cleaned_ml** and **df_cleaned_bert**) to allow comparison across mental health categories.  
+
+### 5.4 Results : Comparison of Lexical Diversity (ML vs BERT Datasets)
 
 | Label      | Lexical Diversity (ML) | Lexical Diversity (BERT) |
 |------------|-------------------------|---------------------------|
@@ -159,17 +171,15 @@ Lexical diversity measures the **variety of vocabulary** used within a text. It 
 | PTSD       | 0.824                   | 0.751                     |
 | Suicidal   | 0.825                   | 0.747                     |
 
-### 5.4 Observations
+### 5.5 Observations
 - **ML dataset** generally shows **higher lexical diversity** compared to the BERT-cleaned dataset.  
 - The difference is expected because **BERT preprocessing involves text normalization**, which reduces variation (e.g., lowercasing, token standardization).  
 - **Addiction** and **Suicidal** classes show the **highest lexical diversity** in ML dataset, indicating varied expressions in these categories.  
 - **ADHD** and **OCD** show comparatively **lower lexical diversity**, suggesting repetitive usage of medical terms (e.g., “adhd”, “ocd”, “medication”).  
 - Overall, lexical diversity drops in the BERT dataset due to aggressive preprocessing but still preserves relative class-level trends.  
 
-### 5.5 Visualization
+### 5.6 Visualization
 - A **bar plot** can highlight the differences between classes and between the two datasets.  
-- X-axis: Classes  
-- Y-axis: Lexical Diversity Score  
 - Two bars per class: one for `df_cleaned_ml`, one for `df_cleaned_bert`  
 
 ![lexical-diversity-comparison-by-class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/lexical-diversity-comparison-by-class.png)
@@ -177,25 +187,75 @@ Lexical diversity measures the **variety of vocabulary** used within a text. It 
 ---
 
 ## 6. Statistical Distinctive Keywords (Chi-Square)
-- Top 10 statistically distinctive words per class (barplots)  
+
+### 6.1 What Are Distinctive Keywords?
+While frequent word counts show which terms appear most often in each class, they do not capture whether a word is **truly distinctive** for that class compared to others.  
+For example, words like *“feel”* or *“want”* are common across multiple categories, so they are not useful discriminators.  
+
+To address this, we use **statistical tests** such as the **Chi-Square test** to identify words that occur significantly more often in one class than in others. These words are more **class-specific** and are better indicators for classification.
+
+### 6.2 Why Chi-Square?
+- **Chi-Square** evaluates the association between each word and the target class.  
+- It answers: *“Is the presence of this word strongly linked to this class compared to others?”*  
+- A high Chi-Square score means the word is a strong discriminator for that class.  
+- This is more **robust and interpretable** than raw frequency because it discounts words that are common everywhere.
+
+### 6.3 Methodology
+1. Convert text into **bag-of-words representation** using `CountVectorizer` (removing stopwords, applying min_df to filter rare terms).  
+2. For each class, compute **Chi-Square statistics** between word occurrence and class labels.  
+3. Rank words by their Chi-Square score.  
+4. Select the **Top 10–15 distinctive words per class**.  
+5. Visualize results using **bar plots** (per class).  
+
+### 6.4 Distinctive Keywords per Class
+Below are the top statistically distinctive words (via Chi-Square) for each class:
+
+- **ADHD**:  
+  `adhd, adderall, med, medication, vyvanse, mg, concerta, diagnose, stimulant, focus`  
+
+- **Addiction**:  
+  `quit, sober, smoke, drink, addiction, nicotine, cigarette, alcohol, craving, relapse`  
+
+- **Anxiety**:  
+  `anxiety, panic, attack, anxious, heart, social, health, symptom, chest, palpitation`  
+
+- **Depression**:  
+  `depression, depressed, anymore, antidepressant, tired, hate, care, sad, loser, shit`  
+
+- **Normal**:  
+  `lpt, happy, edit, buy, save, travel, thought, small, item, award`  
+
+- **OCD**:  
+  `ocd, thought, intrusive, compulsion, obsession, pocd, theme, erp, contamination, harm`  
+
+- **PTSD**:  
+  `ptsd, trauma, flashback, trigger, nightmare, abuse, assault, emdr, therapist, sexual`  
+
+- **Suicidal**:  
+  `suicide, kill, die, grief, commit, death, suicidal, wish, son, dad`  
+
+### 6.5 Observations
+- The Chi-Square method successfully identifies **domain-specific markers** for each class.  
+- **ADHD** and **OCD** show clear clinical/medical terminology (e.g., *adderall, medication, intrusive, compulsion*).  
+- **Addiction** highlights behavior and recovery-related terms (e.g., *sober, relapse, nicotine*).  
+- **Anxiety** emphasizes physiological symptoms (*panic, attack, chest, palpitation*).  
+- **Depression** and **Suicidal** classes share emotional and existential markers, but Suicidal also contains explicit terms (*suicide, kill, die*).  
+- **Normal** includes casual/non-clinical terms (*lpt, happy, edit, travel*), showing contrast with mental health categories.  
+- This statistical filtering is **more informative than raw word frequency**, making it valuable for feature engineering and model explainability.
+
+### 6.6 Visualization
+- For each class, bar plots of **Top 10 distinctive words** clearly illustrate the strength of association.  
 
 <p float = "middle">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/addiction-distinctive-class-barplot.png" width="400">
-   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/adhd-distinctive-class-barplot.png" width="400">
-   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/anxiety-distinctive-class-barplot.png" width="400">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/addiction-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/adhd-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/anxiety-distinctive-class-barplot.png" width="500">
+    <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/depression-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/normal-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ocd-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ptsd-distinctive-class-barplot.png" width="500">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/suicidal-distinctive-class-barplot.png" width="500">
 </p>
-
-<p float = "middle">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/depression-distinctive-class-barplot.png" width="300">
-   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/normal-distinctive-class-barplot.png" width="300">
-   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ocd-distinctive-class-barplot.png" width="300">
-</p>
-
-<p float = "middle">
-  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ptsd-distinctive-class-barplot.png" width="300">
-   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/suicidal-distinctive-class-barplot.png" width="300">
-</p>
-
 ---
 
 ## 7. Embedding Visualization
