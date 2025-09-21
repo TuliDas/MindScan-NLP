@@ -136,9 +136,9 @@ After cleaning, the distinctive words per class are more meaningful, helping to 
 
 ### 5.1 What is Lexical Diversity?
 Lexical diversity measures the **variety of vocabulary** used within a text. It is typically calculated as the ratio of **unique words to total words** (also known as the *type-token ratio*).  
-\[
-\text{Lexical Diversity} = \frac{\text{Number of Unique Words (Types)}}{\text{Total Number of Words (Tokens)}}
-\]  
+
+$\text{Lexical Diversity} = \frac{\text{Number of Unique Words (Types)}}{\text{Total Number of Words (Tokens)}}$
+
 A higher lexical diversity score indicates richer vocabulary usage, while a lower score suggests more repetition of words.
 
 ---
