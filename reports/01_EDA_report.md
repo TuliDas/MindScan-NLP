@@ -84,8 +84,6 @@ We analyzed the text length and word distribution for posts across different cla
 
 ## 4. Word-Level Analysis
 
-## 4. Word-Level Analysis
-
 ### 4.1 Initial Word Analysis
 - Generated word clouds for each class to visualize most frequent words.  
 - Calculated top 20 most frequent words per class (before removing common words).  
@@ -139,14 +137,64 @@ After cleaning, the distinctive words per class are more meaningful, helping to 
 ---
 
 ## 5. Lexical Diversity
-- Mean lexical diversity (unique word ratio) per class  
-- Comparison between `df_cleaned_ml` and `df_cleaned_bert` datasets  
-- Barplot of lexical diversity scores  
+
+### 5.1 What is Lexical Diversity?
+Lexical diversity measures the **variety of vocabulary** used within a text. It is typically calculated as the ratio of **unique words to total words** (often referred to as the *type-token ratio*). A higher lexical diversity score indicates richer vocabulary usage, while a lower score suggests more repetition of words.
+
+### 5.2 Why is it Important?
+- Helps to understand **expressiveness** of language within each mental health class.  
+- Indicates whether users in different categories rely on **repetitive words** (e.g., symptom keywords) or use a **broader vocabulary**.  
+- Useful in **feature analysis** for NLP tasks, as lexical richness may impact model generalization.  
+
+### 5.3 Comparison of Lexical Diversity (ML vs BERT Datasets)
+
+| Label      | Lexical Diversity (ML) | Lexical Diversity (BERT) |
+|------------|-------------------------|---------------------------|
+| ADHD       | 0.801                   | 0.725                     |
+| Addiction  | 0.839                   | 0.779                     |
+| Anxiety    | 0.813                   | 0.753                     |
+| Depression | 0.818                   | 0.739                     |
+| Normal     | 0.820                   | 0.758                     |
+| OCD        | 0.800                   | 0.746                     |
+| PTSD       | 0.824                   | 0.751                     |
+| Suicidal   | 0.825                   | 0.747                     |
+
+### 5.4 Observations
+- **ML dataset** generally shows **higher lexical diversity** compared to the BERT-cleaned dataset.  
+- The difference is expected because **BERT preprocessing involves text normalization**, which reduces variation (e.g., lowercasing, token standardization).  
+- **Addiction** and **Suicidal** classes show the **highest lexical diversity** in ML dataset, indicating varied expressions in these categories.  
+- **ADHD** and **OCD** show comparatively **lower lexical diversity**, suggesting repetitive usage of medical terms (e.g., “adhd”, “ocd”, “medication”).  
+- Overall, lexical diversity drops in the BERT dataset due to aggressive preprocessing but still preserves relative class-level trends.  
+
+### 5.5 Visualization
+- A **bar plot** can highlight the differences between classes and between the two datasets.  
+- X-axis: Classes  
+- Y-axis: Lexical Diversity Score  
+- Two bars per class: one for `df_cleaned_ml`, one for `df_cleaned_bert`  
+
+![lexical-diversity-comparison-by-class](https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/barplots-histplots/lexical-diversity-comparison-by-class.png)
 
 ---
 
 ## 6. Statistical Distinctive Keywords (Chi-Square)
 - Top 10 statistically distinctive words per class (barplots)  
+
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/addiction-distinctive-class-barplot.png" width="400">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/adhd-distinctive-class-barplot.png" width="400">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/anxiety-distinctive-class-barplot.png" width="400">
+</p>
+
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/depression-distinctive-class-barplot.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/normal-distinctive-class-barplot.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ocd-distinctive-class-barplot.png" width="300">
+</p>
+
+<p float = "middle">
+  <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/ptsd-distinctive-class-barplot.png" width="300">
+   <img src="https://github.com/TuliDas/MindScan-NLP/blob/main/images/eda/distinctive-words/suicidal-distinctive-class-barplot.png" width="300">
+</p>
 
 ---
 
