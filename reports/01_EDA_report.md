@@ -351,8 +351,17 @@ The embedding visualization suggests that some mental health conditions (e.g., A
 ---
 
 ## 8. Conclusion
-- Summary of findings from all sections  
-- Notable patterns, class differences, and data quality remarks  
+### 8.1 Summary of Findings  
+- Dataset is mostly balanced (~2000 posts per class; Suicidal slightly lower at 1913).  
+- BERT-cleaned posts are longer, while ML-cleaned posts show higher lexical diversity.  
+- Chi-square analysis highlighted class-specific words (e.g., *adderall* for ADHD, *flashback* for PTSD, *compulsion* for OCD).  
+- Embedding visualizations reveal tight, distinct clusters for OCD and PTSD, whereas Anxiety, Depression, and Suicidal overlap more.
+
+### 8.2 Notable Patterns & Class Differences  
+- **ADHD & Addiction:** Clear lexical boundaries with medication/behavior references.  
+- **Anxiety, Depression, Suicidal:** Overlapping vocabulary suggests semantic similarity.  
+- **OCD & PTSD:** Distinct clusters with unique keywords.  
+- **Normal:** Wide lexical spread, overlapping with multiple classes.
 
 
 
