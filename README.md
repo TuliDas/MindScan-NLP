@@ -33,7 +33,8 @@ Evaluation will include **accuracy, precision, recall, F1-score**, and **explain
 - [x] **Cleaning** 
 - [x] **EDA + EDA_Report writing**
 - [x] **Baseline ML : Logistic Regression (TF-IDF)**
-- [ ] Classical ML : SVM , Random Forest 
+- [x] **Classical ML : SVM**
+- [ ] Classical ML : Random Forest 
 - [ ] Neural sequence modeling (BiLSTM)  
 - [ ] Transformer fine-tuning (BERT/DistilBERT)  
 - [ ] Explainability (LIME/SHAP)  
