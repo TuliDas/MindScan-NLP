@@ -57,6 +57,18 @@ PTSD: 0.125
 Suicidal: 0.067
 
 - LogReg/BERT → Confidence: **0.996**
+  Predicted Class: Depression
+Confidence Score: 0.996
+
+-----All class probabilities:-----
+ADHD: 0.000
+Addiction: 0.000
+Anxiety: 0.001
+Depression: 0.996
+Normal: 0.001
+OCD: 0.000
+PTSD: 0.000
+Suicidal: 0.003
 
 ---
 
@@ -107,7 +119,19 @@ Normal: 0.095
 OCD: 0.141
 PTSD: 0.568
 Suicidal: 0.055 
-- LogReg/BERT → Confidence: **0.975** (Predicted *Suicidal*)  
+- LogReg/BERT → Confidence: **0.975** (Predicted *Suicidal*)
+  Predicted Class: Suicidal
+Confidence Score: 0.975
+
+-----All class probabilities:-----
+ADHD: 0.000
+Addiction: 0.000
+Anxiety: 0.000
+Depression: 0.008
+Normal: 0.000
+OCD: 0.000
+PTSD: 0.017
+Suicidal: 0.975
 
 ---
 
@@ -172,6 +196,18 @@ OCD: 0.017
 PTSD: 0.019
 Suicidal: 0.586
 - LogReg/BERT → Confidence: **0.965**
+  Predicted Class: Suicidal
+Confidence Score: 0.965
+
+-----All class probabilities:-----
+ADHD: 0.000
+Addiction: 0.000
+Anxiety: 0.000
+Depression: 0.035
+Normal: 0.000
+OCD: 0.000
+PTSD: 0.000
+Suicidal: 0.965
 
 ---
 
@@ -233,7 +269,19 @@ Normal: 0.246
 OCD: 0.120
 PTSD: 0.123
 Suicidal: 0.035  
-- LogReg/BERT → Confidence: **0.836** (Predicted *Suicidal*)  
+- LogReg/BERT → Confidence: **0.836** (Predicted *Suicidal*)
+  Predicted Class: Suicidal
+Confidence Score: 0.836
+
+-----All class probabilities:-----
+ADHD: 0.000
+Addiction: 0.000
+Anxiety: 0.007
+Depression: 0.125
+Normal: 0.020
+OCD: 0.002
+PTSD: 0.010
+Suicidal: 0.836
 
 ---
 
@@ -299,7 +347,19 @@ OCD: 0.166
 PTSD: 0.032
 Suicidal: 0.059
   
-- LogReg/BERT → Confidence: **0.405** (Predicted *Depression*)  
+- LogReg/BERT → Confidence: **0.405** (Predicted *Depression*)
+  Predicted Class: Depression
+Confidence Score: 0.405
+
+-----All class probabilities:-----
+ADHD: 0.000
+Addiction: 0.000
+Anxiety: 0.022
+Depression: 0.405
+Normal: 0.009
+OCD: 0.000
+PTSD: 0.349
+Suicidal: 0.215 
 
 ---
 
