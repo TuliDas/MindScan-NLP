@@ -1,6 +1,5 @@
-# Model Performance Analysis
+# Classical ML Model Performance Analysis
 
-This project compared multiple feature representations and classifiers for the task of **mental health text classification**.  
 The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT embeddings, each trained with Logistic Regression and SVM.
 
 ---
@@ -13,8 +12,8 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
 
 | **Model** | **Prediction** | **Confidence** | **Notes** |
 |-----------|----------------|----------------|------------|
-| LogReg / TF-IDF | **Depression** | 0.494 | Top tokens: feel, anymore, burden |
-| SVM / TF-IDF | **Depression** | 0.615 | Top tokens: lately, feel, anymore |
+| LogReg / TF-IDF | **Depression** | 0.494 | Top tokens: feel, anymore, lately, burden |
+| SVM / TF-IDF | **Depression** | 0.615 | Top tokens: lately, feel, anymore, burden |
 | LogReg / Word2Vec | **Depression** | 0.325 | — |
 | LogReg / BERT | **Depression** | 0.996 | Very confident |
 
@@ -26,8 +25,8 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
 
 | **Model** | **Prediction** | **Confidence** | **Notes** |
 |-----------|----------------|----------------|------------|
-| LogReg / TF-IDF | **PTSD** | 0.498 | Top tokens: trauma, happen, control |
-| SVM / TF-IDF | **PTSD** | 0.629 | Top tokens: trauma, happen, night |
+| LogReg / TF-IDF | **PTSD** | 0.498 | Top tokens: trauma, happen, control, violent |
+| SVM / TF-IDF | **PTSD** | 0.629 | Top tokens: trauma, happen, control, night |
 | LogReg / Word2Vec | **PTSD** | 0.568 | — |
 | LogReg / BERT | ❌ **Suicidal** | 0.975 | Misclassified |
 
@@ -39,8 +38,8 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
 
 | **Model** | **Prediction** | **Confidence** | **Notes** |
 |-----------|----------------|----------------|------------|
-| LogReg / TF-IDF | **Suicidal** | 0.528 | Top tokens: life, death, live |
-| SVM / TF-IDF | **Suicidal** | 0.592 | Top tokens: death, life, heartbreak |
+| LogReg / TF-IDF | **Suicidal** | 0.528 | Top tokens: life, death, live, anymore |
+| SVM / TF-IDF | **Suicidal** | 0.592 | Top tokens: death, life, think life, heartbreak |
 | LogReg / Word2Vec | **Suicidal** | 0.586 | — |
 | LogReg / BERT | **Suicidal** | 0.965 | Very confident |
 
@@ -52,7 +51,7 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
 
 | **Model** | **Prediction** | **Confidence** | **Notes** |
 |-----------|----------------|----------------|------------|
-| LogReg / TF-IDF | **Depression** | 0.297 | Top tokens: life, know, feel |
+| LogReg / TF-IDF | **Depression** | 0.297 | Top tokens: life, know, feel, relationship |
 | SVM / TF-IDF | **Depression** | 0.276 | Top tokens: life, relationship, feel |
 | LogReg / Word2Vec | ❌ **ADHD** | 0.249 | Misclassified |
 | LogReg / BERT | ❌ **Suicidal** | 0.836 | Misclassified |
@@ -65,8 +64,8 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
 
 | **Model** | **Prediction** | **Confidence** | **Notes** |
 |-----------|----------------|----------------|------------|
-| LogReg / TF-IDF | **Anxiety** | 0.344 | Top tokens: chest, people, avoid |
-| SVM / TF-IDF | **Anxiety** | 0.394 | Top tokens: chest, rude, people |
+| LogReg / TF-IDF | **Anxiety** | 0.344 | Top tokens: chest, people, avoid, wrong |
+| SVM / TF-IDF | **Anxiety** | 0.394 | Top tokens: chest, rude, people, avoid |
 | LogReg / Word2Vec | ❌ **Normal** | 0.418 | Misclassified |
 | LogReg / BERT | ❌ **Depression** | 0.405 | Misclassified |
 
@@ -92,10 +91,3 @@ The experiments covered classical ML with TF-IDF, Word2Vec embeddings, and BERT 
    - Averaging compresses long posts, diluting rare but important features.  
    - Semantic closeness does not always map directly to diagnostic categories.  
 
----
-
-## Conclusion
-
-- ✅ **Best Performing Models:** Logistic Regression and SVM with TF-IDF (~77% accuracy).  
-- ⚠️ **Embeddings with Logistic Regression:** Showed weaker performance due to dataset characteristics.  
-- 🎯 **Lesson Learned:** Model performance depends not only on architecture but also on feature representation and dataset nature.  
