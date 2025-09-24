@@ -16,9 +16,9 @@ The goal is to classify user posts into mental health categories such as:
 
 ## Methods
 The project will compare several modeling approaches:
-1. **Baseline**: Logistic Regression (TF-IDF) — simple, interpretable
-2. **Classical ML**: SVM, Random Forest
-3. **Neural Model**: BiLSTM with pretrained embeddings
+1. **Classical ML**: Logistic Regression (TF-IDF) , SVM(TF-IDF) — simple, interpretable
+2. **Classical ML- with embeddings**: Logistic Regression(word2vec) , Logistic Regression(Bert Embeddings)
+3. **Deep Learning, Neural Model**: CNN , BiLSTM with pretrained embeddings , GRNN + attention
 4. **Transformer**: DistilBERT / BERT-base fine-tuning
 
 Evaluation will include **accuracy, precision, recall, F1-score**, and **explainability** with tools like **LIME/SHAP**.
