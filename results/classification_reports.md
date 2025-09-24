@@ -3,6 +3,15 @@
 This document presents the classification reports for different models trained on the mental health text dataset.
 
 ---
+## Class Name : Label
+- ADHD: 0
+- Addiction: 1
+- Anxiety: 2
+- Depression: 3
+- Normal: 4
+- OCD: 5
+- PTSD: 6
+- Suicidal: 7
 
 ## 1. Logistic Regression + TF-IDF
 **Accuracy:** 0.7713
